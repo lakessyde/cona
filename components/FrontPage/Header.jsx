@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <>
       <Box
-        position={{ base: "fixed", md: "sticky" }}
+        position={{ base: "sticky", md: "sticky" }}
         width={"100%"}
         height={{ base: "58px", height: "67px" }}
         zIndex={2}
@@ -128,40 +128,43 @@ export default function Header() {
               _focus={{ background: "none", color: "none" }}
               onClick={onOpen}
             />
-
-            <Drawer
-              isOpen={isOpen}
-              placement={"right"}
-              onClose={onClose}
-              finalFocusRef={btnRef}
-            >
-              <DrawerContent marginTop={"69px"}>
-                <Box
-                  display={{
-                    base: "block",
-                    md: "none",
-                  }}
-                  padding={"5px 10px"}
-                >
-                  {LinkItems.map((link, i) => (
-                    <MenuLink key={i} link={link} />
-                  ))}
-                  <Box alignItems={"center"} padding={"0px 18px"}>
-                    <Button
-                      alignItems={"center"}
-                      variant={"outline"}
-                      fontSize={"14px"}
-                      width={"100%"}
-                      fontWeight={"600"}
-                      borderRadius={"4px solid"}
-                      _hover={{ background: "primary" }}
-                    >
-                      Sign in
-                    </Button>
+            <Box>
+              <Drawer
+                isOpen={isOpen}
+                placement={"right"}
+                onClose={onClose}
+                finalFocusRef={btnRef}
+              >
+                <DrawerContent marginTop={"69px"}>
+                  <Box
+                    display={{
+                      base: "block",
+                      md: "none",
+                    }}
+                    padding={"5px 10px"}
+                  >
+                    {LinkItems.map((link, i) => (
+                      <MenuLink key={i} link={link} />
+                    ))}
+                    <Box alignItems={"center"} padding={"5px 18px"}>
+                      <Button
+                        alignItems={"center"}
+                        variant={"outline"}
+                        fontSize={"14px"}
+                        width={"100%"}
+                        fontWeight={"600"}
+                        borderRadius={"4px"}
+                        borderWidth={"1px"}
+                        borderColor={"primary"}
+                        _hover={{ background: "primary" }}
+                      >
+                        Sign in
+                      </Button>
+                    </Box>
                   </Box>
-                </Box>
-              </DrawerContent>
-            </Drawer>
+                </DrawerContent>
+              </Drawer>
+            </Box>
           </Box>
         </Box>
       </Box>

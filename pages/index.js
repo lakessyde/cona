@@ -27,6 +27,29 @@ export default function Home() {
         <Box>
           <Box></Box>
           <Header />
+          <Box
+            position={"relative"}
+            display={"flex"}
+            flexShrink={"0px"}
+            width={"100%"}
+            margin="0 auto"
+            paddingTop={{ base: "24px", md: "24px" }}
+            paddingBottom={"24px"}
+            paddingLeft={{ base: "24px", md: "56px" }}
+            paddingRight={{ base: "24px", md: "56px" }}
+            maxWidth={"1142px"}
+            overflow={"hidden"}
+          >
+            <Box display={"flex"} alignItems={"center"} flexDirectio={"row"}>
+              <Box
+                display={"flex"}
+                alignItems={"flex-start"}
+                flexDir={"column"}
+                paddingBottom={"111px"}
+                flex={"1 1 0%"}
+              ></Box>
+            </Box>
+          </Box>
         </Box>
       </Flex>
     </div>
