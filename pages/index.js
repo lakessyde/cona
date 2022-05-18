@@ -14,7 +14,7 @@ import Header from "../components/FrontPage/Header";
 import { SiBitcoin } from "react-icons/si";
 import { MdForward } from "react-icons/md";
 
-import { baseUrl, fetchApi } from "../utils/fetchAPI";
+
 
 export default function Home() {
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
@@ -101,6 +101,7 @@ export default function Home() {
                       Coinbase is the easiest place to buy and sell<br></br>
                       cryptocurrency. Sign up and get started today.
                     </Heading>
+                    <Box display={'flex'} alignItems={'flex-start'} flexDirection={'column'} minWidth={'480px'}></Box>
                   </Box>
                   <Box></Box>
                 </Box>
