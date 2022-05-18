@@ -140,6 +140,25 @@ export default function Home() {
             </Box>
           </Box>
         </Box>
+
+        <Box position={"relative"}>
+          <Box
+            display={"flex"}
+            flexShrink={"0"}
+            width={"100%"}
+            margin={"0px auto"}
+            flexDirection={"column"}
+            padding={0}
+            maxWidth={"1142px"}
+            border={"1px solid rgba(var(--gray60),0.2)"}
+            borderRadius={"4px"}
+            boxShadow={"rgba(50,53,61,0.2)"}
+          >
+            <Box width={"100%"} borderRadius={"0"} >
+              <Heading>Price Section</Heading>
+            </Box>
+          </Box>
+        </Box>
       </Flex>
     </div>
   );
