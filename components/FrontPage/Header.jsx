@@ -13,6 +13,7 @@ import {
   useColorModeValue,
   useDisclosure,
   DrawerCloseButton,
+  Divider,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { CgClose, CgMenuHotdog } from "react-icons/cg";
@@ -27,7 +28,7 @@ const LinkItems = [
   { label: "About us", href: "/" },
   { label: "Contact us", href: "/" },
   { label: "Indivdiuals", href: "/" },
-  { label: "Indivdiuals", href: "/" },
+  ,
 ];
 import Logo from "../../public/logo.svg";
 import { useRouter } from "next/router";
@@ -131,19 +132,18 @@ export default function Header() {
               Get Started
             </Button>
             <IconButton
-              display={{ base: "none", md: "inherit" }}
+              margin={{ base: "10px -30px 10px -5px", md: "10px" }}
               onClick={toggleColorMode}
               icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
               variant={"ghost"}
               padding="10px"
-              margin={"10px"}
             />
             <IconButton
               display={{ base: "flex", md: "flex", lg: "flex", xl: "none" }}
               icon={isOpen ? <CgClose /> : <CgMenuHotdog />}
               variant={"ghost"}
               padding="10px"
-              margin={"10px -10px 10px 10"}
+              margin={"10px -10px 10px 20px"}
               _focus={{ background: "none", color: "none" }}
               onClick={onOpen}
             />
@@ -181,6 +181,11 @@ export default function Header() {
                       >
                         Sign in
                       </Button>
+                      <Divider
+                        orientation="horizontal"
+                        variant={"solid"}
+                        marginTop={"15px"}
+                      />
                     </Box>
                   </Box>
                 </DrawerContent>

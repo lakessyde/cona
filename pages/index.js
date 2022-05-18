@@ -14,7 +14,8 @@ import Header from "../components/FrontPage/Header";
 import { SiBitcoin } from "react-icons/si";
 import { MdForward } from "react-icons/md";
 
-
+import { baseUrl, fetchApi } from "../utils/fetchAPI";
+import heroImg from "../public/hero.png";
 
 export default function Home() {
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
@@ -65,7 +66,7 @@ export default function Home() {
                     display="flex"
                     alignItems={"flex-start"}
                     flexDirection="column"
-                    paddingTop={"100px"}
+                    paddingTop={{ base: "90px", md: "100px" }}
                     paddingBottom={"111px"}
                     flex={"1 1 0%"}
                   >
@@ -91,19 +92,49 @@ export default function Home() {
                       fontSize={{ base: "34px", md: "62px" }}
                       fontWeight={"600"}
                       lineHeight={{ base: "40px", md: "1.15" }}
-                      maxWidth={{ base: "100%", md: "100%", lg: "425px" }}
-                      marginTop={"20px"}
+                      maxWidth={{ base: "70%", md: "70%", lg: "425px" }}
+                      marginTop={"8px"}
                       marginBottom={"16px"}
                     >
                       Jump start your crypto portfolio
                     </Heading>
-                    <Heading lineHeight="1.4" fontSize="20px"fontWeight={500} color={'gray.500'}>
-                      Coinbase is the easiest place to buy and sell<br></br>
-                      cryptocurrency. Sign up and get started today.
+                    <Heading
+                      fontFamily={"inherit"}
+                      fontSize={{ base: "16px", md: "20px" }}
+                      fontWeight={"500"}
+                      lineHeight={{ base: "20px", md: "1.15" }}
+                      maxWidth={{ base: "70%", md: "70%", lg: "425px" }}
+                      color={"gray.500"}
+                      marginBottom={"16px"}
+                      paddingRight={{ base: "70px", md: "inherit" }}
+                      mr={"20px"}
+                    >
+                      Cona is the easiest place to buy and sell cryptocurrency.
+                      Sign up and get started today.
                     </Heading>
-                    <Box display={'flex'} alignItems={'flex-start'} flexDirection={'column'} minWidth={'480px'}></Box>
+                    <Box
+                      display={"flex"}
+                      alignItems={"flex-start"}
+                      flexDirection={"column"}
+                      minWidth={"480px"}
+                    ></Box>
                   </Box>
-                  <Box></Box>
+                  <Box
+                    display={"flex"}
+                    paddingTop={"50px"}
+                    paddingLeft={"24px"}
+                    justifyContent={"flex-end"}
+                    flex={"2 1 0%"}
+                  >
+                    <Box>
+                      <Image
+                        src={heroImg}
+                        width={"600px"}
+                        height={"600px"}
+                        alt={"hero-img"}
+                      />
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
             </Box>
