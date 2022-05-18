@@ -1,4 +1,7 @@
+import { ColorModeScript } from "@chakra-ui/react";
 import NextDocument, { Head, Html, Main, NextScript } from "next/document";
+
+import myTheme from "../styles/theme";
 
 export default class Document extends NextDocument {
   render() {
@@ -7,7 +10,7 @@ export default class Document extends NextDocument {
         <Head>
           <meta httpEquiv="X-UA-COMPATIBLE" content="IE=edge"></meta>
           <meta property="og:type" name="og:type" content="website"></meta>
-          
+
           <meta
             name="description"
             content="Cona is a secure plaftorm that easy to buy, sell and store crypto and nfts like Bitcoin, Ethereum, and more. Based in the USA,  Cona is available worldwides"
@@ -23,8 +26,10 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700;900&display=swap"
             rel="stylesheet"
           />
+          
         </Head>
         <body>
+          <ColorModeScript initialColorMode={myTheme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>

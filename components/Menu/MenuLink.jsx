@@ -1,8 +1,9 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function MenuLink({ link, ...rest }) {
   const { label, href } = link;
+  const color = useColorModeValue("rgb(5, 15, 25)", "rgb(255,255,255)");
 
   return (
     <Link
@@ -27,7 +28,7 @@ export default function MenuLink({ link, ...rest }) {
             fontSize={{ base: "16px", md: "14px" }}
             fontWeight={"600"}
             textAlign={"center"}
-            color={"rgb(5, 15, 25)"}
+            color={color}
           >
             {label}
           </Text>

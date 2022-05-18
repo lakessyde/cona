@@ -9,11 +9,14 @@ import {
   Drawer,
   DrawerContent,
   DrawerOverlay,
+  useColorMode,
+  useColorModeValue,
   useDisclosure,
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { CgClose, CgMenuHotdog } from "react-icons/cg";
+import { FaMoon, FaSun } from "react-icons/fa";
 import React from "react";
 
 import MenuLink from "../Menu/MenuLink";
@@ -21,8 +24,8 @@ import MenuLink from "../Menu/MenuLink";
 const LinkItems = [
   { label: "Prices", href: "/" },
   { label: "Buy & Sell", href: "/" },
-  { label: "Company", href: "/" },
-  { label: "Indivdiuals", href: "/" },
+  { label: "About us", href: "/" },
+  { label: "Contact us", href: "/" },
   { label: "Indivdiuals", href: "/" },
   { label: "Indivdiuals", href: "/" },
 ];
@@ -34,6 +37,14 @@ export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const router = useRouter();
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
+  const color = useColorModeValue("rgb(255, 255, 255)", "rgb(5, 15, 25)");
+  const bb = useColorModeValue(
+    "1px solid rgb(236, 239, 241)",
+    "1px solid rgba(255, 255, 255, 0.16)"
+  );
 
   useEffect(() => {
     router.events.on("routeChangeComplete", onClose);
@@ -51,8 +62,8 @@ export default function Header() {
         height={{ base: "58px", height: "67px" }}
         zIndex={2}
         top={"0px"}
-        background={"rgb(255, 255, 255)"}
-        borderBottom={"1px solid rgb(236, 239, 241)"}
+        background={bg}
+        borderBottom={bb}
       >
         <Box
           display={"flex"}
@@ -91,7 +102,7 @@ export default function Header() {
             display={{ base: "none", md: "none", lg: "none", xl: "inherit" }}
           >
             {LinkItems.map((link, i) => (
-              <MenuLink key={i} link={link} />
+              <MenuLink color={color} key={i} link={link} />
             ))}
           </Box>
           <Box
@@ -113,29 +124,39 @@ export default function Header() {
               backgroundColor={"primary"}
               fontSize={"14px"}
               fontWeight={"600"}
+              color={color}
               borderRadius={"4px"}
               _hover={{ background: "primary" }}
             >
               Get Started
             </Button>
-
+            <IconButton
+              display={{ base: "none", md: "inherit" }}
+              onClick={toggleColorMode}
+              icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
+              variant={"ghost"}
+              padding="10px"
+              margin={"10px"}
+            />
             <IconButton
               display={{ base: "flex", md: "flex", lg: "flex", xl: "none" }}
               icon={isOpen ? <CgClose /> : <CgMenuHotdog />}
               variant={"ghost"}
               padding="10px"
-              margin={"10px -10px 10px 20px"}
+              margin={"10px -10px 10px 10"}
               _focus={{ background: "none", color: "none" }}
               onClick={onOpen}
             />
+
             <Box>
               <Drawer
                 isOpen={isOpen}
                 placement={"right"}
                 onClose={onClose}
                 finalFocusRef={btnRef}
+                size={"full"}
               >
-                <DrawerContent marginTop={"69px"}>
+                <DrawerContent marginTop={"59px"}>
                   <Box
                     display={{
                       base: "block",
