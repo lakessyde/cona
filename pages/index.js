@@ -14,7 +14,7 @@ import Header from "../components/FrontPage/Header";
 import { SiBitcoin } from "react-icons/si";
 import { MdForward } from "react-icons/md";
 
-import { baseUrl, fetchApi } from "../utils/fetchAPI";
+import { baseUrl, fetchApi } from "../utils/fetchApi";
 import heroImg from "../public/hero.png";
 
 export default function Home() {
