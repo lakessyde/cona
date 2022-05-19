@@ -1,8 +1,10 @@
 import {
   Box,
   Flex,
+  Grid,
   Heading,
   Icon,
+  SimpleGrid,
   Text,
   useColorModeValue,
   useMediaQuery,
@@ -17,7 +19,7 @@ import { MdForward } from "react-icons/md";
 
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import heroImg from "../public/hero.png";
-import Property from "../components/Coins";
+import Coins from "../components/Coins";
 
 export default function Home({ propertiesForSale }) {
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
@@ -143,14 +145,11 @@ export default function Home({ propertiesForSale }) {
             borderRadius={"4px"}
             boxShadow={"rgba(50,53,61,0.2)"}
           >
-            <Box width={"100%"} borderRadius={"0"}>
-              <Heading>
-                {" "}
-                {propertiesForSale.map((property) => (
-                  <Property property={property} key={property.uuid} />
-                ))}{" "}
-              </Heading>
-            </Box>
+            <SimpleGrid  minChildWidth='300px' spacing='20px'>
+              {propertiesForSale.map((property) => (
+                <Coins property={property} key={property.uuid} />
+              ))}
+            </SimpleGrid>
           </Box>
         </Box>
       </Flex>
@@ -160,7 +159,7 @@ export default function Home({ propertiesForSale }) {
 
 export async function getStaticProps() {
   const propertyForSale = await fetchApi(
-    `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl`
+    `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
   );
 
   return {
