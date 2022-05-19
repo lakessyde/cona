@@ -122,17 +122,19 @@ export default function Header() {
               Sign in
             </Text>
             <Button
+            display={{base:"none", md:"inherit"}}
               backgroundColor={"primary"}
               fontSize={"14px"}
               fontWeight={"600"}
               color={color}
               borderRadius={"4px"}
               _hover={{ background: "primary" }}
+              marginRight={'5px'}
             >
               Get Started
             </Button>
             <IconButton
-              margin={{ base: "10px -30px 10px -5px", md: "10px" }}
+              margin={{ base: "10px -10px 10px 5px", md: "10px" }}
               onClick={toggleColorMode}
               icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
               variant={"ghost"}
@@ -143,7 +145,7 @@ export default function Header() {
               icon={isOpen ? <CgClose /> : <CgMenuHotdog />}
               variant={"ghost"}
               padding="10px"
-              margin={"10px -10px 10px 20px"}
+              margin={"10px -15px 10px 5px"}
               _focus={{ background: "none", color: "none" }}
               onClick={onOpen}
             />
@@ -160,7 +162,7 @@ export default function Header() {
                   <Box
                     display={{
                       base: "block",
-                      md: "none",
+                      md: "block",
                     }}
                     padding={"5px 10px"}
                   >
@@ -181,11 +183,21 @@ export default function Header() {
                       >
                         Sign in
                       </Button>
-                      <Divider
-                        orientation="horizontal"
-                        variant={"solid"}
-                        marginTop={"15px"}
-                      />
+                      <Button
+                      marginTop={'10px'}
+                        alignItems={"center"}
+                        backgroundColor={'primary'}
+                        fontSize={"14px"}
+                        width={"100%"}
+                        fontWeight={"600"}
+                        borderRadius={"4px"}
+                        borderWidth={"1px"}
+                        borderColor={"primary"}
+                        _hover={{ background: "primary" }}
+                      >
+                        Get Started
+                      </Button>
+                     
                     </Box>
                   </Box>
                 </DrawerContent>

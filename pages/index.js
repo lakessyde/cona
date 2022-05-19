@@ -2,6 +2,7 @@ import {
   Box,
   Flex,
   Heading,
+  Icon,
   Text,
   useColorModeValue,
   useMediaQuery,
@@ -20,6 +21,7 @@ import Property from "../components/Coins";
 
 export default function Home({ propertiesForSale }) {
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
+  const cl = useColorModeValue("gray.600", "gray.400");
   const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   return (
@@ -45,99 +47,84 @@ export default function Home({ propertiesForSale }) {
           <Header />
           <Box
             display={"flex"}
-            flexShrink={"0"}
+            flexShrink={0}
             width={"100%"}
-            margin="0 auto"
-            paddingTop={{ base: "24px", md: "24px" }}
-            paddingBottom={{ base: "24px", md: "24px" }}
+            margin={"0 auto"}
+            paddingTop={"24px"}
+            paddingBottom={"24px"}
+            overflow={"hidden"}
+            maxWidth={"1142px"}
             paddingLeft={{ base: "24px", md: "56px" }}
             paddingRight={{ base: "24px", md: "56px" }}
-            maxWidth={"1142px"}
-            overflow={"hidden"}
           >
             <Box display={"flex"} alignItems={"center"} flexDirection={"row"}>
               <Box
                 display={"flex"}
                 alignItems={"flex-start"}
-                flexDir={"column"}
+                flexDirection={"column"}
+                paddingTop={"100px"}
                 paddingBottom={"111px"}
                 flex={"1 1 0%"}
               >
-                <Box display={"flex"} alignItems={"center"} flexDirection="row">
-                  <Box
-                    display="flex"
-                    alignItems={"flex-start"}
-                    flexDirection="column"
-                    paddingTop={{ base: "90px", md: "100px" }}
-                    paddingBottom={"111px"}
-                    flex={"1 1 0%"}
-                  >
-                    <Box
-                      display={"flex"}
-                      cursor={"pointer"}
-                      alignItems={"center"}
-                      flexDirection={"row"}
-                      color={"primary"}
-                      fontWeight={"bold"}
-                    >
-                      <SiBitcoin style={{ width: "24px", height: "24px" }} />
-                      <Text ml={1} fontSize={{ base: "14px", md: "16px" }}>
-                        Own a crypto portfolio today
-                      </Text>
-                      <MdForward
-                        ml={4}
-                        style={{ width: "20px", height: "20px" }}
-                      />
-                    </Box>
-                    <Heading
-                      fontFamily={"inherit"}
-                      fontSize={{ base: "34px", md: "62px" }}
-                      fontWeight={"600"}
-                      lineHeight={{ base: "40px", md: "1.15" }}
-                      maxWidth={{ base: "70%", md: "70%", lg: "425px" }}
-                      marginTop={"8px"}
-                      marginBottom={"16px"}
-                    >
-                      Jump start your crypto portfolio
-                    </Heading>
-                    <Heading
-                      fontFamily={"inherit"}
-                      fontSize={{ base: "16px", md: "20px" }}
-                      fontWeight={"500"}
-                      lineHeight={{ base: "20px", md: "1.15" }}
-                      maxWidth={{ base: "70%", md: "70%", lg: "425px" }}
-                      color={"gray.500"}
-                      marginBottom={"16px"}
-                      paddingRight={{ base: "70px", md: "inherit" }}
-                      mr={"20px"}
-                    >
-                      Cona is the easiest place to buy and sell cryptocurrency.
-                      Sign up and get started today.
-                    </Heading>
-                    <Box
-                      display={"flex"}
-                      alignItems={"flex-start"}
-                      flexDirection={"column"}
-                      minWidth={"480px"}
-                    ></Box>
-                  </Box>
-                  <Box
-                    display={"flex"}
-                    paddingTop={"50px"}
-                    paddingLeft={"24px"}
-                    justifyContent={"flex-end"}
-                    flex={"2 1 0%"}
-                  >
-                    <Box>
-                      <Image
-                        src={heroImg}
-                        width={"600px"}
-                        height={"600px"}
-                        alt={"hero-img"}
-                      />
-                    </Box>
-                  </Box>
+                <Box
+                  display={"flex"}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  flexDirection={"row"}
+                  color={"primary"}
+                  fontWeight={"500"}
+                >
+                  <Icon
+                    as={SiBitcoin}
+                    w={"20px"}
+                    h={"20px"}
+                    borderWidth
+                    alt={"bitcoin-icon"}
+                  />
+                  <Text ml={"10px"}>Jump start your portfolio</Text>
+                  <Icon
+                    as={MdForward}
+                    w={"20px"}
+                    h={"20px"}
+                    ml={"5px"}
+                    alt={"foward-icon"}
+                  />
                 </Box>
+                <Heading
+                  fontWeight={"500"}
+                  fontFamily={"inherit"}
+                  fontSize={{ base: "34px", md: "62px" }}
+                  lineHeight={{ base: "40px", md: "inherit" }}
+                  marginTop={"10px"}
+                  marginBottom={"16px"}
+                >
+                  Jump start your crytpo portfolio
+                </Heading>
+                <Heading
+                  fontWeight={"400"}
+                  fontFamily={"inherit"}
+                  fontSize={{ base: "16px", md: "20px" }}
+                  lineHeight={{ base: "24px", md: "1.4" }}
+                  marginBottom={"32px"}
+                  color={cl}
+                >
+                  Cona is the easiest place to buy and sell cryptocurrency. Sign
+                  up and get started today.
+                </Heading>
+              </Box>
+              <Box
+                display={{ base: "none", md: "flex" }}
+                paddingTop={"10px"}
+                paddingLeft={"20px"}
+                justifyContent={"flex-end"}
+                flex={"2 1 0%"}
+              >
+                <Image
+                  src={heroImg}
+                  height="500px"
+                  width={"500px"}
+                  alt="hero-nft-img"
+                />
               </Box>
             </Box>
           </Box>
@@ -172,7 +159,9 @@ export default function Home({ propertiesForSale }) {
 }
 
 export async function getStaticProps() {
-  const propertyForSale = await fetchApi(`${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl`);
+  const propertyForSale = await fetchApi(
+    `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl`
+  );
 
   return {
     props: {

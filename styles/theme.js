@@ -8,6 +8,15 @@ const myTheme = extendTheme({
         height: "100%",
         margin: "0px",
         fontWeight: "400",
+        lineHeight: "1.15",
+      },
+
+      "*": {
+        boxSizing: "border-box",
+      },
+      "*, ::after, ::before": {
+        borderStyle: "solid",
+        borderWidth: "0",
       },
     },
   },
