@@ -145,7 +145,7 @@ export default function Home({ propertiesForSale }) {
             borderRadius={"4px"}
             boxShadow={"rgba(50,53,61,0.2)"}
           >
-            <SimpleGrid  minChildWidth='300px' spacing='20px'>
+            <SimpleGrid minChildWidth="300px" spacing="20px">
               {propertiesForSale.map((property) => (
                 <Coins property={property} key={property.uuid} />
               ))}
@@ -167,4 +167,8 @@ export async function getStaticProps() {
       propertiesForSale: propertyForSale?.data.coins,
     },
   };
+}
+
+export const createError = async function getStaticProps(){
+  
 }

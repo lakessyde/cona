@@ -47,6 +47,7 @@ export default function Header() {
     "1px solid rgba(255, 255, 255, 0.16)"
   );
 
+  const signIn = <Link href="auth/login" />;
   useEffect(() => {
     router.events.on("routeChangeComplete", onClose);
 
@@ -58,7 +59,7 @@ export default function Header() {
   return (
     <>
       <Box
-        position={{ base: "sticky", md: "sticky" }}
+        position={{ base: "fixed", md: "sticky" }}
         width={"100%"}
         height={{ base: "58px", height: "67px" }}
         zIndex={2}
@@ -113,23 +114,37 @@ export default function Header() {
             justifyContent={"flex-end"}
             alignItems={"center"}
           >
-            <Text
-              display={{ base: "none", md: "none", lg: "none", xl: "inherit" }}
-              marginRight={"20px"}
-              fontWeight={"600"}
-              lineHeight={"16px"}
+            <Link
+              href="auth/login"
+              textDecoration={"none !important"}
+              cursor={"pointer"}
             >
-              Sign in
-            </Text>
+              <Text
+                display={{
+                  base: "none",
+                  md: "none",
+                  lg: "none",
+                  xl: "inherit",
+                }}
+                marginRight={"20px"}
+                fontWeight={"600"}
+                lineHeight={"16px"}
+                cursor={"pointer"}
+              >
+                Sign in
+              </Text>
+            </Link>
+
             <Button
-            display={{base:"none", md:"inherit"}}
+              display={{ base: "none", md: "inherit" }}
               backgroundColor={"primary"}
               fontSize={"14px"}
               fontWeight={"600"}
               color={color}
               borderRadius={"4px"}
               _hover={{ background: "primary" }}
-              marginRight={'5px'}
+              marginRight={"5px"}
+              onClick={() => window.open(signIn)}
             >
               Get Started
             </Button>
@@ -179,14 +194,15 @@ export default function Header() {
                         borderRadius={"4px"}
                         borderWidth={"1px"}
                         borderColor={"primary"}
+                        onClick={signIn}
                         _hover={{ background: "primary" }}
                       >
                         Sign in
                       </Button>
                       <Button
-                      marginTop={'10px'}
+                        marginTop={"10px"}
                         alignItems={"center"}
-                        backgroundColor={'primary'}
+                        backgroundColor={"primary"}
                         fontSize={"14px"}
                         width={"100%"}
                         fontWeight={"600"}
@@ -197,7 +213,6 @@ export default function Header() {
                       >
                         Get Started
                       </Button>
-                     
                     </Box>
                   </Box>
                 </DrawerContent>

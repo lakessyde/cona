@@ -20,10 +20,10 @@ const Coins = ({ property: { iconUrl, change, name, price } }) => (
         height={25}
       />
     </Box>
-    <Box paddingRight={'10'}>
-      <Text>{name}</Text>
+    <Box paddingRight={"10"}>
+      <Text>{name ? name : "No connection"}</Text>
     </Box>
-    <Box ml={8}>${Math.round(price)}</Box>
+    <Box ml={8}>${Math.round(price ? price : "No connection")}</Box>
   </Flex>
 );
 
