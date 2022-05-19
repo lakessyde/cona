@@ -16,10 +16,12 @@ import { MdForward } from "react-icons/md";
 
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import heroImg from "../public/hero.png";
+import Property from "../components/Coins";
 
-export default function Home() {
+export default function Home({ propertiesForSale }) {
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
   const [isMobile] = useMediaQuery("(max-width: 768px)");
+
   return (
     <div>
       <Head>
@@ -154,12 +156,27 @@ export default function Home() {
             borderRadius={"4px"}
             boxShadow={"rgba(50,53,61,0.2)"}
           >
-            <Box width={"100%"} borderRadius={"0"} >
-              <Heading>Price Section</Heading>
+            <Box width={"100%"} borderRadius={"0"}>
+              <Heading>
+                {" "}
+                {propertiesForSale.map((property) => (
+                  <Property property={property} key={property.uuid} />
+                ))}{" "}
+              </Heading>
             </Box>
           </Box>
         </Box>
       </Flex>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const propertyForSale = await fetchApi(`${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl`);
+
+  return {
+    props: {
+      propertiesForSale: propertyForSale?.data.coins,
+    },
+  };
 }
