@@ -1,13 +1,13 @@
 import {
   Box,
+  Button,
   Flex,
-  Grid,
   Heading,
   Icon,
+  Input,
   SimpleGrid,
   Text,
   useColorModeValue,
-  useMediaQuery,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
@@ -24,7 +24,6 @@ import Coins from "../components/Coins";
 export default function Home({ propertiesForSale }) {
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
   const cl = useColorModeValue("gray.600", "gray.400");
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
 
   return (
     <div>
@@ -113,19 +112,69 @@ export default function Home({ propertiesForSale }) {
                   Cona is the easiest place to buy and sell cryptocurrency. Sign
                   up and get started today.
                 </Heading>
+                <Box
+                  display={"flex"}
+                  minWidth={{ base: "0px", md: "auto", lg: "480px" }}
+                  alignItems={"flex-start"}
+                  flexDirection={"column"}
+                  width={"100%"}
+                >
+                  <form style={{ width: "100%" }}>
+                    <Box
+                      display={"flex"}
+                      flexDirection={{ base: "column", md: "row" }}
+                      width={"100%"}
+                    >
+                      <Box
+                        display={"flex"}
+                        flex={"1 1 auto"}
+                        flexDirection={"row"}
+                        position={"relative"}
+                        borderWidth={"1px"}
+                        borderStyle={"solid"}
+                        borderColor={"rgba(91,97,110,0.2)"}
+                        borderRadius={"4px"}
+                        fontSize={"18px"}
+                      >
+                        <Input
+                          type={"email"}
+                          placeholder={"Email"}
+                          padding={"20px"}
+                          borderRadius={"4px"}
+                          height={"auto"}
+                        />
+                      </Box>
+                      <Box
+                        marginLeft={{ base: "0", md: "16px" }}
+                        marginTop={{ base: "8px", md: "auto" }}
+                      >
+                        <Button
+                          position={"relative"}
+                          width={"100%"}
+                          padding={"24px"}
+                          height={"auto"}
+                          fontSize={"16px"}
+                          background={"primary"}
+                        >
+                          Get Started
+                        </Button>
+                      </Box>
+                    </Box>
+                  </form>
+                </Box>
               </Box>
               <Box
-                display={{ base: "none", md: "flex" }}
+                display={{ base: "none", md: "none", lg: "flex" }}
                 paddingTop={"10px"}
-                paddingLeft={"20px"}
+                paddingLeft={"15px"}
                 justifyContent={"flex-end"}
                 flex={"2 1 0%"}
               >
                 <Image
                   src={heroImg}
-                  height="500px"
-                  width={"500px"}
-                  alt="hero-nft-img"
+                  width={"400px"}
+                  height={"400px"}
+                  alt={"hero-section-img"}
                 />
               </Box>
             </Box>
@@ -152,6 +201,7 @@ export default function Home({ propertiesForSale }) {
             </SimpleGrid>
           </Box>
         </Box>
+        <Footer />
       </Flex>
     </div>
   );
@@ -161,14 +211,9 @@ export async function getStaticProps() {
   const propertyForSale = await fetchApi(
     `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
   );
-
   return {
     props: {
       propertiesForSale: propertyForSale?.data.coins,
     },
   };
-}
-
-export const createError = async function getStaticProps(){
-  
 }

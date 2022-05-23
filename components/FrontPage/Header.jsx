@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   IconButton,
-  Link,
   Text,
   Drawer,
   DrawerContent,
@@ -15,6 +14,7 @@ import {
   DrawerCloseButton,
   Divider,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import Image from "next/image";
 import { CgClose, CgMenuHotdog } from "react-icons/cg";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -47,7 +47,6 @@ export default function Header() {
     "1px solid rgba(255, 255, 255, 0.16)"
   );
 
-  const signIn = <Link href="auth/login" />;
   useEffect(() => {
     router.events.on("routeChangeComplete", onClose);
 
@@ -84,20 +83,27 @@ export default function Header() {
             flex={"2 1 0%"}
           >
             <Link
+              href=""
               display={"inline-flex"}
               textDecoration={"none"}
               _hover={{ textDecoration: "none" }}
             >
-              <Image
-                src={Logo}
-                width={"40px"}
-                height={"40px"}
-                alt={"Cona Logo"}
-                position={"relative"}
-              />
-              <Heading fontFamily={"inherit"} color={"primary"}>
-                ona
-              </Heading>
+              <Box
+                display={"inline-flex"}
+                textDecoration={"none"}
+                _hover={{ textDecoration: "none" }}
+              >
+                <Image
+                  src={Logo}
+                  width={"40px"}
+                  height={"40px"}
+                  alt={"Cona Logo"}
+                  position={"relative"}
+                />
+                <Heading fontFamily={"inherit"} color={"primary"}>
+                  ona
+                </Heading>
+              </Box>
             </Link>
           </Box>
           <Box
@@ -144,7 +150,6 @@ export default function Header() {
               borderRadius={"4px"}
               _hover={{ background: "primary" }}
               marginRight={"5px"}
-              onClick={() => window.open(signIn)}
             >
               Get Started
             </Button>
@@ -194,7 +199,6 @@ export default function Header() {
                         borderRadius={"4px"}
                         borderWidth={"1px"}
                         borderColor={"primary"}
-                        onClick={signIn}
                         _hover={{ background: "primary" }}
                       >
                         Sign in

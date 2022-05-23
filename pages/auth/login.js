@@ -1,5 +1,9 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 
 export default function Login() {
-  return <Box>I am the</Box>;
+  return (
+    <Flex>
+      
+    </Flex>
+  );
 }
