@@ -12,9 +12,4 @@ yarn dev:frontend
 yarn dev:backend
 ```
 
-<<<<<<< HEAD
-=======
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
->>>>>>> 5d13ddf0dd504fe99e32adda06cf1662a7f47490
