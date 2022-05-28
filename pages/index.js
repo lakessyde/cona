@@ -207,6 +207,25 @@ export default function Home({ propertiesForSale }) {
   );
 }
 
+
+
+export const getStaticProps = async () => {
+  try {
+    const { propertyForSale, errors } = await fetchApi(
+      `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
+    );
+    if (errors || !propertyForSale) {
+      return { notFound: true };
+    }
+    return { props: { 
+      propertiesForSale: propertyForSale?.data.coins,
+     } };
+  } catch (errors) {
+    return { notFound: true };
+  }
+};
+
+/*
 export async function getStaticProps() {
   const propertyForSale = await fetchApi(
     `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
@@ -217,3 +236,4 @@ export async function getStaticProps() {
     },
   };
 }
+*/

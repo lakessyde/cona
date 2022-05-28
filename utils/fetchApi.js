@@ -6,9 +6,23 @@ export const fetchApi = async (url) => {
   const { data } = await axios.get(url, {
     headers: {
       "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
-      "X-RapidAPI-Key": "c555d93c04msh1e0fa512ba704a9p1edc09jsn60b8306f8db5",
+      "X-RapidAPI-Key": process.env.RAPID_API_KEY,
     },
   });
 
   return data;
 };
+
+export const fetchingApi = async(url)=>{
+  try{
+    const{data, errors} = await axios.get(url, {
+      headers:{
+        "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+        "X-RapidAPI-Key": process.env.RAPID_API_KEY,
+      },
+    })
+    return data;
+  }catch(errors){
+    console.log(e)
+  }
+}
