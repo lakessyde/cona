@@ -1,3 +1,4 @@
+import {useHistory} from "react-router" 
 import {
   Box,
   Button,
@@ -22,6 +23,7 @@ import heroImg from "../public/hero.png";
 import Coins from "../components/Coins";
 
 export default function Home({ propertiesForSale }) {
+  const navigator = useHistory();
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
   const cl = useColorModeValue("gray.600", "gray.400");
 
@@ -207,33 +209,19 @@ export default function Home({ propertiesForSale }) {
   );
 }
 
-
-
-export const getStaticProps = async () => {
-  try {
-    const { propertyForSale, errors } = await fetchApi(
+export async function getStaticProps() {
+  try{
+    const propertyForSale = await fetchApi(
       `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
     );
-    if (errors || !propertyForSale) {
-      return { notFound: true };
+    return {
+      props:{
+        propertiesForSale : propertyForSale?.data.coins,
+      }
     }
-    return { props: { 
-      propertiesForSale: propertyForSale?.data.coins,
-     } };
-  } catch (errors) {
-    return { notFound: true };
+  }catch (err) {
+    console.log("this is the error",err);
   }
-};
-
-/*
-export async function getStaticProps() {
-  const propertyForSale = await fetchApi(
-    `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
-  );
-  return {
-    props: {
-      propertiesForSale: propertyForSale?.data.coins,
-    },
-  };
 }
-*/
+
+

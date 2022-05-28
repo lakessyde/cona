@@ -10,19 +10,10 @@ export const fetchApi = async (url) => {
     },
   });
 
+  if(data.errors){
+    console.log("this is the error",errors)
+  }
   return data;
 };
 
-export const fetchingApi = async(url)=>{
-  try{
-    const{data, errors} = await axios.get(url, {
-      headers:{
-        "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
-        "X-RapidAPI-Key": process.env.RAPID_API_KEY,
-      },
-    })
-    return data;
-  }catch(errors){
-    console.log(e)
-  }
-}
+

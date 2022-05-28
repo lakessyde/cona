@@ -47,6 +47,10 @@ export default function Header() {
     "1px solid rgba(255, 255, 255, 0.16)"
   );
 
+  function getStarted() {
+    return <Link href={'auth/signup'} />
+  }
+
   useEffect(() => {
     router.events.on("routeChangeComplete", onClose);
 
@@ -148,6 +152,7 @@ export default function Header() {
               fontWeight={"600"}
               color={color}
               borderRadius={"4px"}
+              onClick={(e) => window.location.href='auth/signup'}
               _hover={{ background: "primary" }}
               marginRight={"5px"}
             >
