@@ -1,4 +1,4 @@
-import {useHistory} from "react-router" 
+
 import {
   Box,
   Button,
@@ -23,7 +23,7 @@ import heroImg from "../public/hero.png";
 import Coins from "../components/Coins";
 
 export default function Home({ propertiesForSale }) {
-  const navigator = useHistory();
+ 
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
   const cl = useColorModeValue("gray.600", "gray.400");
 
