@@ -1,4 +1,4 @@
-Cona is a crypto demo template
+## Cona is a crypto demo template
 
 ## Getting Started
 
