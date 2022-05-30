@@ -1,15 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Cona is a crypto demo template
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev:frontend
-npm run dev:backend
+npm run dev
+
 # or
-yarn dev:frontend
-yarn dev:backend
+yarn dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

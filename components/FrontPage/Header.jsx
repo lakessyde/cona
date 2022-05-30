@@ -1,24 +1,20 @@
 import {
   Box,
   Button,
-  Flex,
   Heading,
   IconButton,
   Text,
   Drawer,
   DrawerContent,
-  DrawerOverlay,
   useColorMode,
   useColorModeValue,
   useDisclosure,
-  DrawerCloseButton,
-  Divider,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
 import { CgClose, CgMenuHotdog } from "react-icons/cg";
 import { FaMoon, FaSun } from "react-icons/fa";
-import React from "react";
+import React, { useEffect } from "react";
 
 import MenuLink from "../Menu/MenuLink";
 
@@ -32,7 +28,6 @@ const LinkItems = [
 ];
 import Logo from "../../public/logo.svg";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -48,7 +43,7 @@ export default function Header() {
   );
 
   function getStarted() {
-    return <Link href={'auth/signup'} />
+    return <Link href={"auth/signup"} />;
   }
 
   useEffect(() => {
@@ -152,7 +147,7 @@ export default function Header() {
               fontWeight={"600"}
               color={color}
               borderRadius={"4px"}
-              onClick={(e) => window.location.href='auth/signup'}
+              onClick={() => (window.location.href = "auth/signup")}
               _hover={{ background: "primary" }}
               marginRight={"5px"}
             >

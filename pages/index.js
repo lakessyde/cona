@@ -1,4 +1,3 @@
-
 import {
   Box,
   Button,
@@ -14,18 +13,22 @@ import Head from "next/head";
 import Image from "next/image";
 import Footer from "../components/FrontPage/Footer";
 import Header from "../components/FrontPage/Header";
-
+import { useEffect } from "react";
 import { SiBitcoin } from "react-icons/si";
 import { MdForward } from "react-icons/md";
 
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import heroImg from "../public/hero.png";
 import Coins from "../components/Coins";
+import { getUsers } from "../utils/users";
 
 export default function Home({ propertiesForSale }) {
- 
   const bg = useColorModeValue("rgb(255, 255, 255)", "gray.800");
   const cl = useColorModeValue("gray.600", "gray.400");
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   return (
     <div>
@@ -210,18 +213,13 @@ export default function Home({ propertiesForSale }) {
 }
 
 export async function getStaticProps() {
-  try{
-    const propertyForSale = await fetchApi(
-      `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
-    );
-    return {
-      props:{
-        propertiesForSale : propertyForSale?.data.coins,
-      }
-    }
-  }catch (err) {
-    console.log("this is the error",err);
-  }
+  const propertyForSale = await fetchApi(
+    `${baseUrl}/coins?referenceCurrencyUuid=yhjMzLPhuIDl&limit=6`
+  );
+  return {
+    props: {
+      propertiesForSale: propertyForSale?.data.coins,
+    },
+    revalidate: 30,
+  };
 }
-
-

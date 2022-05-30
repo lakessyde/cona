@@ -1,6 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 
-const myTheme = extendTheme({
+const Theme = extendTheme({
   styles: {
     global: {
       "html, body": {
@@ -9,6 +9,7 @@ const myTheme = extendTheme({
         margin: "0px",
         fontWeight: "400",
         lineHeight: "1.15",
+        textDecoration: "none"
       },
 
       "*": {
@@ -38,4 +39,4 @@ const myTheme = extendTheme({
   },
 });
 
-export default myTheme;
+export default Theme;
